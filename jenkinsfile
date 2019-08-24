@@ -1,0 +1,25 @@
+def workspace;
+node
+{
+    stage('Checkout')
+    {
+        checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'bba8abac-cb92-4edb-895a-181091ab1b71', url: 'https://github.com/SivaMani50/hello-world.git']]])
+        workspace =pwd()
+    }
+    stage('Static Code Analysis')
+    {
+        echo "Static Code Analysis"
+    }
+    stage('Build')
+    {
+        echo "Build the code "
+    }
+    stage("Unit Testing")
+    {
+        echo "Unit Test"
+    }
+    stage("Delivery")
+    {
+        echo "Deliver the code"
+    }
+}
